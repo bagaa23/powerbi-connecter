@@ -6,14 +6,14 @@
         <field name="model">pbi.connect</field>
         <field name="arch" type="xml">
             <form string="powerbiconnect">
-            <div class="ribbon" attrs="{'invisible': [('is_connect', '=', False)]}">
+            <div class="ribbon" modifiers="{'invisible': [('is_connect', '=', False)]}">
                 <span>CONNECTED</span>
             </div>
                 <group name="powerbiconnect">
                     <field name="app_id" />
                     <field name="tenant_id" />
                     <field name="username" />
-                    <field name="password" />
+                    <field name="password" password="True"/>
                     <field name="is_connect" invisible="1" />
                     
                 </group>
@@ -35,7 +35,7 @@
                     <field name="app_id" />
                     <field name="tenant_id" />
                     <field name="username" />
-                    <field name="password" />
+                    <!-- <field name="password" /> -->
                 
             </tree>
         </field>

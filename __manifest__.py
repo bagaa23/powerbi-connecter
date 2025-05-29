@@ -9,20 +9,21 @@
     'description': " ",  
     'depends': ['base','resource'],
     'data': [
-        'security/pbi_security.xml',
-        'security/ir.model.access.csv',
+        # 'security/pbi_security.xml',
+        # 'security/ir.model.access.csv',
         'views/pbi_connect.xml',
-        'views/pbi_workspace.xml',
-        'views/pbi_report.xml',
-        'views/pbi_dashboard.xml',
-        'data/service_cron.xml',
+        # 'views/pbi_workspace.xml',
+        # 'views/pbi_report.xml',
+        # 'views/pbi_dashboard.xml',
+        # 'data/service_cron.xml',
         
     ],
+    'images': ['static/description/icon.png'],
     'assets': {
         'web.assets_backend': [
-            'powerbi/static/src/css/custom.css',
-            'powerbi/static/src/js/powerbi.min.js',   
-            'powerbi/static/src/js/powerbireport.js',
+            # 'powerbi/static/src/css/custom.css',
+            # 'powerbi/static/src/js/powerbi.min.js',   
+            # 'powerbi/static/src/js/powerbireport.js',
                      
         ],
     },
