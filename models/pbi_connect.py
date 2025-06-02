@@ -14,6 +14,7 @@ class PbiConnect(models.Model):
     tenant_id = fields.Char(string="tenant id")
     username = fields.Char(string="Username")
     password = fields.Char(string="Password")
+    
 
     is_connect = fields.Boolean(string="Status") 
     access_id = fields.Char()
@@ -22,7 +23,10 @@ class PbiConnect(models.Model):
     @api.model
     def connect(self):
         if self.id==False:
-            self = self.search([('is_connect','=',True)])[0]
+            records = self.search([('is_connect','=',True)])
+            if records:
+                self = records[0]
+            
         if self.id==False:
             _logger.exception('do not have connected config')
             return
@@ -31,8 +35,14 @@ class PbiConnect(models.Model):
         
         try:
             client = msal.PublicClientApplication(self.app_id,authority=atuthority_url)
+            
             response = client.acquire_token_by_username_password(username=self.username,password=self.password,scopes=scopes)
+            if (response.get('access_token')==None):
+                _logger.exception(response.get('error_description'))
+                self.is_connect = False
+                return
             self.access_id = response.get('access_token')
+
             self.is_connect = True
         except (UserError, ValidationError):
             self.is_connect = False
@@ -48,9 +58,16 @@ class PbiConnect(models.Model):
         scopes = ['https://analysis.windows.net/powerbi/api/.default']
         
         try:
+            
             client = msal.PublicClientApplication(self.app_id,authority=atuthority_url)
+            
             response = client.acquire_token_by_username_password(username=self.username,password=self.password,scopes=scopes)
+            if (response.get('access_token')==None):
+                _logger.exception(response.get('error_description'))
+                self.is_connect = False
+                return
             self.access_id = response.get('access_token')
+
             self.is_connect = True
         except (UserError, ValidationError):
             self.is_connect = False

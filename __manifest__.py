@@ -18,11 +18,12 @@
         'data/service_cron.xml',
         
     ],
+    'images': ['static/description/icon.png'],
     'assets': {
         'web.assets_backend': [
-            'powerbi/static/src/css/custom.css',
-            'powerbi/static/src/js/powerbi.min.js',   
-            'powerbi/static/src/js/powerbireport.js',
+            'powerbi-connecter/static/src/css/custom.css',
+            'powerbi-connecter/static/src/js/powerbi.min.js',   
+            'powerbi-connecter/static/src/js/powerbireport.js',
                      
         ],
     },
