@@ -13,7 +13,7 @@
                     <field name="app_id" />
                     <field name="tenant_id" />
                     <field name="username" />
-                    <field name="password" />
+                    <field name="password" password="True"/>
                     <field name="is_connect" invisible="1" />
                     
                 </group>
@@ -35,7 +35,7 @@
                     <field name="app_id" />
                     <field name="tenant_id" />
                     <field name="username" />
-                    <field name="password" />
+                    <field name="password" password="True" />
                 
             </tree>
         </field>

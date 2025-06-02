@@ -17,7 +17,7 @@ odoo.define('powerbi.pbi_report', function (require) {
                 return;
             }
             var models = window['powerbi-client'].models;
-
+            var filters_visible = this.state.data.filters_visible?this.state.data.filters_visible:false;
 
             var embedConfig = {
                 type: 'report',
@@ -26,7 +26,14 @@ odoo.define('powerbi.pbi_report', function (require) {
                 accessToken: this.state.data.access_token,
                 embedUrl: this.state.data.embedurl,
                 permissions: models.Permissions.All,
-                tokenType: models.TokenType.Aad
+                tokenType: models.TokenType.Aad,
+                settings: {
+                    panes:{
+                        filters: {
+                            visible: filters_visible
+                        }
+                    }
+                }
 
             };
             console.log(embedConfig);
