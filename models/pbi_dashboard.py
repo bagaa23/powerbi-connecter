@@ -11,7 +11,8 @@ class PbiDashboard(models.Model):
     report_type = fields.Char(string="report type")
     access_token = fields.Char(string="access token",compute='_compute_access_token')
     access_users = fields.Many2many('res.users','pbi_dashboard_access_user_rel',string='access users')
-    is_admin = fields.Boolean(string="is admin",compute='checkadmin') 
+    is_admin = fields.Boolean(string="is admin",compute='checkadmin')
+    filters_visible = fields.Boolean(string="filters visible",default=True) 
     # _sql_constraints = [
     #     ('unique_dashboard_report_id', 'unique(report_id)', 'report_id. should be unique.'),
     #     ]

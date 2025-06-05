@@ -14,6 +14,7 @@
                     <field name="embedurl" invisible="1"/>
                     <field name="access_token" invisible="1"/>
                     <field name="access_users" widget="many2many_tags" />
+                    <field name="filters_visible"/>
                  </group>
                  <div id="reportContainer" style="height: 700px; width: 100%;"></div>   
                 
