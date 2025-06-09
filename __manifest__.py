@@ -16,6 +16,7 @@
         'views/pbi_report.xml',
         'views/pbi_dashboard.xml',
         'data/service_cron.xml',
+        'views/blocks.xml',
         
     ],
     'images': ['static/description/icon.png'],
@@ -26,6 +27,10 @@
             'powerbi-connecter/static/src/js/powerbireport.js',
                      
         ],
+         'web.assets_frontend': [
+            'powerbi-connecter/static/src/js/user_records_snippet.js',
+            'powerbi-connecter/static/src/js/user_reports_snippet.js',
+    ],
     },
     'installable': True,
     'application': True,

@@ -17,7 +17,7 @@
                     <field name="filters_visible"/>
                  </group>
                  <div id="reportContainer" style="height: 700px; width: 100%;"></div>   
-                
+               
             </form>
         </field>
     </record>

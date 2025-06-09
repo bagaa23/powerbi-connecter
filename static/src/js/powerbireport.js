@@ -13,11 +13,11 @@ odoo.define('powerbi.pbi_report', function (require) {
             console.log("Form View Rendered!");
 
             if (!this.state.model in ["pbi.report", "pbi.dashboard"]) {
-                console.log("bish bn");
+                console.log("worong!");
                 return;
             }
             var models = window['powerbi-client'].models;
-            var filters_visible = this.state.data.filters_visible?this.state.data.filters_visible:false;
+            var filters_visible = this.state.data.filters_visible ? this.state.data.filters_visible : false;
 
             var embedConfig = {
                 type: 'report',
@@ -28,17 +28,31 @@ odoo.define('powerbi.pbi_report', function (require) {
                 permissions: models.Permissions.All,
                 tokenType: models.TokenType.Aad,
                 settings: {
-                    panes:{
+                    panes: {
                         filters: {
                             visible: filters_visible
                         }
-                    }
+                    },
+                    allowFullScreen: true
                 }
 
             };
             console.log(embedConfig);
             var reportContainer = this.$el.find('#reportContainer')
             if (reportContainer.length) {
+                const fullBtn = $(`
+                    <button type="button" class="btn btn-secondary mb-2" id="pbiFullscreenBtn" style="float:right;">
+                        ⛶ Fullscreen
+                    </button>
+                `);
+
+                // Тайлангийн container-ын урд эсвэл хойно нэмэх
+                reportContainer.before(fullBtn);
+
+                $('#pbiFullscreenBtn').on('click', function () {
+                    console.log("Fullscreen товч дарагдлаа");
+                    report.fullscreen();
+                });
                 var report = powerbi.embed(reportContainer[0], embedConfig);
                 // Тайлан амжилттай оруулсныг шалгах
                 report.on('loaded', function () {
@@ -48,6 +62,8 @@ odoo.define('powerbi.pbi_report', function (require) {
                 report.on('error', function (event) {
                     console.error('Power BI тайланг ачаалахад алдаа гарлаа:', event.detail);
                 });
+
+
 
                 // var header_div = this.$el.find('div[class="o_cp_bottom"]');
                 // if (header_div) header_div.hide();

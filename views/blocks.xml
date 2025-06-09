@@ -1,0 +1,53 @@
+<odoo>
+  <template id="powerbi_dashboard_banner_block" name="PowerBI Dashboard list">
+    <section class="s_pbi_dashboard" data-snippet="powerbi_dashboard_banner_block"
+      data-name="PowerBI Dashboard Banner">
+    
+
+      <div class="container">
+        <h3>User Dashboards</h3>
+        <div id="dashbiard-list">
+          <p>Loading...</p>
+        </div>
+      </div>
+    </section>
+  </template>
+
+  <template id="powerbi_report_banner_block" name="PowerBI Report list">
+    <section class="s_pbi_report" data-snippet="powerbi_report_banner_block"
+      data-name="PowerBI Report Banner">
+    
+
+      <div class="container">
+        <h3>User Reports</h3>
+        <div id="report-list">
+          <p>Loading...</p>
+        </div>
+      </div>
+    </section>
+  </template>
+
+  <!-- <template id="template_dashboard_view" name="View Power BI Dashboard" page="true">
+    <t t-call="website.layout">
+        <div id="reportContainer" style="height:600px;"></div>
+        
+    </t>
+  </template> -->
+
+  
+
+  <!-- Register block into website builder -->
+  <template id="pbi_snippets_dashboard" inherit_id="website.snippets" name="BG PBI Snippet dashboard">
+    <xpath expr="//div[@id='snippet_structure']//t[@t-snippet]" position="before">
+      <t t-snippet="powerbi-connecter.powerbi_dashboard_banner_block"
+        t-thumbnail="/powerbi-connecter/static/description/icon.png" />
+    </xpath>
+  </template>
+
+  <template id="pbi_snippets_report" inherit_id="website.snippets" name="BG PBI Snippet report">
+    <xpath expr="//div[@id='snippet_structure']//t[@t-snippet]" position="before">
+      <t t-snippet="powerbi-connecter.powerbi_report_banner_block"
+        t-thumbnail="/powerbi-connecter/static/description/icon.png" />
+    </xpath>
+  </template>
+</odoo>
