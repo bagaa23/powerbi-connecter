@@ -2,7 +2,7 @@
   <template id="powerbi_dashboard_banner_block" name="PowerBI Dashboard list">
     <section class="s_pbi_dashboard" data-snippet="powerbi_dashboard_banner_block"
       data-name="PowerBI Dashboard Banner">
-    
+
 
       <div class="container">
         <h3>User Dashboards</h3>
@@ -16,7 +16,7 @@
   <template id="powerbi_report_banner_block" name="PowerBI Report list">
     <section class="s_pbi_report" data-snippet="powerbi_report_banner_block"
       data-name="PowerBI Report Banner">
-    
+
 
       <div class="container">
         <h3>User Reports</h3>
@@ -33,11 +33,26 @@
         
     </t>
   </template> -->
+  <template id="template_dashboard_view" name="View Power BI Dashboard">
+    <t t-call="website.layout">
+      <section class="s_powerbi_dashboard"
+        t-att-data-report-id="report_id"
+        t-att-data-embed-url="embed_url"
+        t-att-data-token="access_token"
+        t-att-data-filters_visible="filters_visible">
+        <div class="container">
+          <h2>Power BI Dashboard</h2>
+          <div id="reportContainer" style="height:600px;"></div>
+          <button id="pbiFullscreenBtn">⛶ Fullscreen</button>
+        </div>
+      </section>
+    </t>
+  </template>
 
-  
 
   <!-- Register block into website builder -->
-  <template id="pbi_snippets_dashboard" inherit_id="website.snippets" name="BG PBI Snippet dashboard">
+  <template id="pbi_snippets_dashboard" inherit_id="website.snippets"
+    name="BG PBI Snippet dashboard">
     <xpath expr="//div[@id='snippet_structure']//t[@t-snippet]" position="before">
       <t t-snippet="powerbi-connecter.powerbi_dashboard_banner_block"
         t-thumbnail="/powerbi-connecter/static/description/icon.png" />

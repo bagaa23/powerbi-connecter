@@ -28,6 +28,8 @@
                      
         ],
          'web.assets_frontend': [
+            'powerbi-connecter/static/src/css/custom.css',
+            'powerbi-connecter/static/src/js/powerbi.min.js',
             'powerbi-connecter/static/src/js/user_records_snippet.js',
             'powerbi-connecter/static/src/js/user_reports_snippet.js',
     ],

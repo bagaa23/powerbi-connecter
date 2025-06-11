@@ -37,7 +37,7 @@ odoo.define('powerbi.pbi_report', function (require) {
                 }
 
             };
-            console.log(embedConfig);
+            // console.log(embedConfig);
             var reportContainer = this.$el.find('#reportContainer')
             if (reportContainer.length) {
                 const fullBtn = $(`
@@ -56,11 +56,11 @@ odoo.define('powerbi.pbi_report', function (require) {
                 var report = powerbi.embed(reportContainer[0], embedConfig);
                 // Тайлан амжилттай оруулсныг шалгах
                 report.on('loaded', function () {
-                    console.log('Power BI тайлан амжилттай ачаалагдлаа!');
+                    console.log('Dashboard loaded');
                 });
 
                 report.on('error', function (event) {
-                    console.error('Power BI тайланг ачаалахад алдаа гарлаа:', event.detail);
+                    console.error('Power BI Embed Error:', event.detail);
                 });
 
 
