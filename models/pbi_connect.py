@@ -49,6 +49,7 @@ class PbiConnect(models.Model):
             _logger.exception(UserError)
 
     def connect_manual(self):
+        _logger.info('start connect_manual')
         if self.id==False:
             self = self.search([('is_connect','=',True)])[0]
         if self.id==False:
