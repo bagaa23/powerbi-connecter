@@ -59,14 +59,15 @@ class PbiConnect(models.Model):
         scopes = ['https://analysis.windows.net/powerbi/api/.default']
         
         try:
-            
+            _logger.info('start PublicClientApplication')
             client = msal.PublicClientApplication(self.app_id,authority=atuthority_url)
-            
+            _logger.info('start acquire_token_by_username_password')
             response = client.acquire_token_by_username_password(username=self.username,password=self.password,scopes=scopes)
             if (response.get('access_token')==None):
                 _logger.exception(response.get('error_description'))
                 self.is_connect = False
                 return
+            a_logger.info('got access_token')
             self.access_id = response.get('access_token')
 
             self.is_connect = True
